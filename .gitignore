@@ -1,0 +1,29 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+
+# Django
+*.log
+*.pot
+*.sqlite3
+/staticfiles
+/media
+
+# PostgreSQL local files (если вдруг есть дампы)
+*.sql
+*.dump
+
+# Environment variables
+.env
+.idea
+
+# Docker
+docker-compose.override.yml
+*.env.dev
+*.env.local
