@@ -9,50 +9,137 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Employee',
+            name="Employee",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('fio', models.CharField(max_length=100)),
-                ('birth_date', models.IntegerField(validators=[django.core.validators.MinValueValidator(1920), django.core.validators.MaxValueValidator(2025)])),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("fio", models.CharField(max_length=100)),
+                (
+                    "birth_date",
+                    models.IntegerField(
+                        validators=[
+                            django.core.validators.MinValueValidator(1920),
+                            django.core.validators.MaxValueValidator(2025),
+                        ]
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
         migrations.CreateModel(
-            name='School',
+            name="School",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100)),
-                ('year', models.IntegerField(validators=[django.core.validators.MinValueValidator(1400), django.core.validators.MaxValueValidator(2024)])),
-                ('rating', models.PositiveIntegerField(validators=[django.core.validators.MaxValueValidator(10)])),
-                ('director', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='core.employee')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=100)),
+                (
+                    "year",
+                    models.IntegerField(
+                        validators=[
+                            django.core.validators.MinValueValidator(1400),
+                            django.core.validators.MaxValueValidator(2024),
+                        ]
+                    ),
+                ),
+                (
+                    "rating",
+                    models.PositiveIntegerField(
+                        validators=[
+                            django.core.validators.MaxValueValidator(10)
+                        ]
+                    ),
+                ),
+                (
+                    "director",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="core.employee",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='SchoolClass',
+            name="SchoolClass",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('count', models.PositiveIntegerField(validators=[django.core.validators.MaxValueValidator(30)])),
-                ('teacher', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='core.employee')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100)),
+                (
+                    "count",
+                    models.PositiveIntegerField(
+                        validators=[
+                            django.core.validators.MaxValueValidator(30)
+                        ]
+                    ),
+                ),
+                (
+                    "teacher",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="core.employee",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Student',
+            name="Student",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('fio', models.CharField(max_length=100)),
-                ('birth_date', models.IntegerField(validators=[django.core.validators.MinValueValidator(1920), django.core.validators.MaxValueValidator(2025)])),
-                ('school_class', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='core.schoolclass')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("fio", models.CharField(max_length=100)),
+                (
+                    "birth_date",
+                    models.IntegerField(
+                        validators=[
+                            django.core.validators.MinValueValidator(1920),
+                            django.core.validators.MaxValueValidator(2025),
+                        ]
+                    ),
+                ),
+                (
+                    "school_class",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="core.schoolclass",
+                    ),
+                ),
             ],
             options={
-                'abstract': False,
+                "abstract": False,
             },
         ),
     ]

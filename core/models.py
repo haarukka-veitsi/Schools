@@ -4,7 +4,9 @@ from django.db import models
 
 class Person(models.Model):
     fio = models.CharField(max_length=100)
-    birth_date = models.IntegerField(validators=[MinValueValidator(1920), MaxValueValidator(2025)])
+    birth_date = models.IntegerField(
+        validators=[MinValueValidator(1920), MaxValueValidator(2025)]
+    )
 
     class Meta:
         abstract = True
@@ -16,7 +18,9 @@ class Employee(Person):
 
 class School(models.Model):
     title = models.CharField(max_length=100)
-    year = models.IntegerField(validators=[MinValueValidator(1400), MaxValueValidator(2024)])
+    year = models.IntegerField(
+        validators=[MinValueValidator(1400), MaxValueValidator(2024)]
+    )
     director = models.ForeignKey(Employee, on_delete=models.PROTECT)
     rating = models.PositiveIntegerField(validators=[MaxValueValidator(10)])
 
