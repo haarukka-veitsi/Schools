@@ -96,3 +96,78 @@ ruff check .
 ```bash
 black .
 ```
+
+## Примеры апи запросов
+
+**Получение списка школ**
+запрос
+```bash
+curl -X GET http://127.0.0.1:8000/api/schools/
+```
+
+ответ
+```json
+{
+  "list":[
+    {
+      "id":1,
+      "director":{
+        "id":3,
+        "fio":"Test",
+        "birth_date":1990
+      },
+      "title":"Example school",
+      "year":2018,
+      "rating":8
+    },
+    {
+      "id":5,
+      "director":{
+        "id":3,
+        "fio":"Test",
+        "birth_date":1990
+      },
+      "title":"Example school",
+      "year":2018,
+      "rating":8
+    }
+  ]
+}
+```
+
+
+**Создание новой школы**
+
+запрос
+```bash
+curl -X POST http://127.0.0.1:8000/api/schools/ -H "Content-Type: application/json" -d '{
+    "school": {
+        "id": 6,
+        "director": {
+            "id": 3,
+            "fio": "Test",
+            "birth_date": 1990
+        },
+        "title": "Example school",
+        "year": 2018,
+        "rating": 8
+    }
+}'
+```
+
+ответ
+```json
+{
+  "school":{
+    "id":7,
+    "director":{
+      "id":3,
+      "fio":"Test",
+      "birth_date":1990
+    },
+    "title":"Example school",
+    "year":2018,
+    "rating":8
+  }
+}
+```
